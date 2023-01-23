@@ -36,7 +36,9 @@ export const getAllOrders = () => async (dispatch, getState) => {
   // const currentUser = getState().loginUserReducer.currentUser;
   dispatch({ type: "ALL_ORDER_REQUEST" });
   try {
-    const response = await axios.get("/api/orders/alluserorder");
+    const response = await axios.get(
+      "https://pizza-wallah-server.onrender.com/api/orders/alluserorder"
+    );
     console.log(response);
     dispatch({ type: "ALL_ORDER_SUCCESS", payload: response.data });
   } catch (error) {
@@ -47,9 +49,14 @@ export const getAllOrders = () => async (dispatch, getState) => {
 export const deliverOrder = (orderid) => async (dispatch, getState) => {
   dispatch({ type: "GET_ALL_ORDER_REQUEST" });
   try {
-    const response = await axios.post("/api/orders/deliverorder", { orderid });
+    const response = await axios.post(
+      "https://pizza-wallah-server.onrender.com/api/orders/deliverorder",
+      { orderid }
+    );
 
-    const orders = await axios.get("/api/orders/alluserorder");
+    const orders = await axios.get(
+      "https://pizza-wallah-server.onrender.com/api/orders/alluserorder"
+    );
     console.log(response);
     dispatch({ type: "GET_ALL_ORDER_SUCCESS", payload: orders.data });
     window.location.reload();

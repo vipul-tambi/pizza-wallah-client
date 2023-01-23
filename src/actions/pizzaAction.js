@@ -6,7 +6,9 @@ export const getAllPizzas = () => async (dispatch) => {
     type: "GET_PIZZAS_REQUEST",
   });
   try {
-    const res = await axios.get("/api/pizzas/getAllPizzas");
+    const res = await axios.get(
+      "https://pizza-wallah-server.onrender.com/api/pizzas/getAllPizzas"
+    );
     // console.log(res);
     dispatch({
       type: "GET_PIZZAS_SUCCESS",
@@ -25,7 +27,10 @@ export const addPizza = (pizza) => async (dispatch) => {
     type: "ADD_PIZZAS_REQUEST",
   });
   try {
-    const res = await axios.post("/api/pizzas/addpizza", { pizza });
+    const res = await axios.post(
+      "https://pizza-wallah-server.onrender.com/api/pizzas/addpizza",
+      { pizza }
+    );
     // console.log(res);
     dispatch({
       type: "ADD_PIZZAS_SUCCESS",
@@ -44,7 +49,10 @@ export const getPizzaById = (pizzaId) => async (dispatch) => {
     type: "GET_PIZZABYID_REQUEST",
   });
   try {
-    const res = await axios.post("/api/pizzas/getpizzabyid", { pizzaId });
+    const res = await axios.post(
+      "https://pizza-wallah-server.onrender.com/api/pizzas/getpizzabyid",
+      { pizzaId }
+    );
     // console.log(res);
     dispatch({
       type: "GET_PIZZABYID_SUCCESS",
@@ -63,7 +71,10 @@ export const updatePizza = (updatedPizza) => async (dispatch) => {
     type: "UPDATE_PIZZABYID_REQUEST",
   });
   try {
-    const res = await axios.post("/api/pizzas/updatepizza", { updatedPizza });
+    const res = await axios.post(
+      "https://pizza-wallah-server.onrender.com/api/pizzas/updatepizza",
+      { updatedPizza }
+    );
     // console.log(res);
     dispatch({
       type: "UPDATE_PIZZABYID_SUCCESS",
@@ -79,7 +90,10 @@ export const updatePizza = (updatedPizza) => async (dispatch) => {
 
 export const deletePizza = (pizzaId) => async (dispatch) => {
   try {
-    await axios.post("/api/pizzas/deletepizza", { pizzaId });
+    await axios.post(
+      "https://pizza-wallah-server.onrender.com/api/pizzas/deletepizza",
+      { pizzaId }
+    );
     message.success("Pizza Deleted Successully");
   } catch (error) {
     message.error(error);
